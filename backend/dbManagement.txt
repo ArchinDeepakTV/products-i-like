@@ -1,0 +1,77 @@
+https://www.sammeechward.com/deploying-full-stack-js-to-aws-ec2
+
+// connection and setup of db on system
+CREATE DATABASE hindlabs;
+CREATE ROLE admins WITH LOGIN PASSWORD HLLhcs987;
+GRANT ALL PRIVILEGES ON DATABASE "hindlabs" TO admins;
+
+CREATE TABLE DistrictsDB (
+    district_id SERIAL PRIMARY KEY,
+    district_name VARCHAR(100) NOT NULL UNIQUE,
+    state_name VARCHAR(20) NOT NULL,
+    date_of_initiation VARCHAR,
+    img_urls TEXT [],
+    district_info VARCHAR
+);
+
+CREATE TABLE CentersDB (
+    center_id SERIAL PRIMARY KEY,
+    center_name VARCHAR(100) NOT NULL UNIQUE,
+    district_name VARCHAR(100) NOT NULL,
+    state_name VARCHAR(20) NOT NULL,
+    date_of_initiation VARCHAR,
+    img_urls TEXT [],
+    center_info VARCHAR,
+    email_id VARCHAR
+);
+
+CREATE TABLE StatesDB (
+    state_id SERIAL PRIMARY KEY,
+    state_name VARCHAR(20) NOT NULL UNIQUE,
+    date_of_initiation VARCHAR,
+    img_urls TEXT [],
+    state_info VARCHAR
+);
+
+DROP TABLE IF EXISTS centersdb;
+
+CREATE TABLE DistrictsDB (
+    district_id SERIAL PRIMARY KEY,
+    district_name VARCHAR(100) NOT NULL UNIQUE,
+    state_name VARCHAR(20) NOT NULL,
+    date_of_initiation VARCHAR,
+    img_urls TEXT [],
+    district_info VARCHAR
+);
+
+CREATE TABLE StatesDB (
+    state_id SERIAL PRIMARY KEY,
+    state_name VARCHAR(20) NOT NULL UNIQUE,
+    date_of_initiation VARCHAR,
+    img_urls TEXT [],
+    state_info VARCHAR
+);
+
+CREATE TABLE CentersDB (
+    center_id SERIAL PRIMARY KEY,
+    center_name VARCHAR(100) NOT NULL UNIQUE,
+    district_name VARCHAR(100) NOT NULL,
+    state_name VARCHAR(20) NOT NULL,
+    date_of_initiation VARCHAR,
+    img_urls TEXT [],
+    center_info VARCHAR,
+    email_id VARCHAR
+);
+
+INSERT INTO CentersDB (center_name, district_name, state_name, date_of_initiation,center_info,email_id) VALUES ('SHREE MATA SHEETLA DEVI', 'GURGAON','HARYANA','APRIL 2019','set up in fhdkjfgbn and working now for sgfkjdgh','hindlabsbilaspur@lifecarehll.com');
+
+UPDATE CentersDB
+SET img_urls=ARRAY[
+    'https://github.com/GurugramIT/ImagesForDashboard/blob/main/Investment%20for%20the%20future%20-%20Made%20with%20PosterMyWall(1).jpg?raw=true',
+    'http://www.hindlabs.in/sites/default/files/Centers%20Images/WhatsApp%20Image%202023-11-01%20at%2011.34.56%20AM.jpeg'
+]
+WHERE center_name='AIIMS MANGALAGIRI';
+
+
+DELETE FROM centersdb WHERE center_name='AIIMS BILASPUR';
+

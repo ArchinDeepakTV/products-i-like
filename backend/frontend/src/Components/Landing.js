@@ -17,6 +17,11 @@ export default function Landing() {
     if (element) {
       element.style.display = "block";
     }
+    if (text.length === 0) {
+      if (element) {
+        element.style.display = "none";
+      }
+    }
   };
 
   return (
